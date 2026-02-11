@@ -135,11 +135,11 @@ export default function Home() {
                     </div>
                 </div>
                 <div>
-                    <Link to="/Service">
-                        <button className="s-btn">Services <i className="fa-solid fa-arrow-down fa-rotate-270"></i></button>
-                    </Link>
+                    {/* <Link> */}
+                    <button className="s-btn">Services <i className="fa-solid fa-arrow-down fa-rotate-270"></i></button>
+                    {/* </Link> */}
                 </div>
-            </section>
+            </section >
 
         </>
     );

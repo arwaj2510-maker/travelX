@@ -1,36 +1,91 @@
 
-import { TextField, Button } from "@mui/material";
-import axios from "axios";
+import { useState } from "react";
+import TextField from "@mui/material/TextField";
 
-export default function Contact() {
+function Contact() {
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        subject: "",
+        message: "",
+    });
+
+    // input change handler
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await fetch("/api/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        });
+
+        alert("Form submit ho gaya ✅");
+    };
 
     return (
         <>
-            {/* //contact// */}
 
             <div className="cnt">
                 <h1>If you need, Just drop us a line</h1>
                 <p>Who are in extremely love with eco friendly system.</p>
             </div>
 
-            <form action="" className="contact">
+            <form className="contact" onSubmit={handleSubmit}>
                 <div className="cnt1">
-                    {/* <input type="text" name="Name" placeholder="Enter Your Name" />
-                    <input type="" name="Address" placeholder="" />
-                    <input type="text" name="" placeholder="Enter Your Subject" /> */}
+                    <TextField
+                        name="name"
+                        label="Name"
+                        placeholder="Enter Your Name"
+                        value={formData.name}
+                        onChange={handleChange}
+                    />
 
-                    {/*  */}
+                    <TextField
+                        name="email"
+                        label="Email"
+                        className="em"
+                        placeholder="Enter Your Email"
+                        value={formData.email}
+                        onChange={handleChange}
+                    />
 
-                    <TextField name="name" label="Name" placeholder="Enter Your Name" />
-                    <TextField name="Email" label="Email" className="inp" placeholder="Enter Your Email" />
-                    <TextField name="" label="Subject" placeholder="Enter Your Subject" />
+                    <TextField
+                        name="subject"
+                        label="Subject"
+                        placeholder="Enter Your Subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                    />
                 </div>
-                <div className="cnt2">
-                    <textarea className="msg-box" placeholder="Type your message..." label="Message"></textarea>
-                    <button id="cnt-btn">Send Message   <i className="fa-solid fa-arrow-down fa-rotate-270"></i></button>
 
+                <div className="cnt2">
+                    <textarea
+                        className="msg-box"
+                        name="message"
+                        placeholder="Type Your Message..."
+                        value={formData.message}
+                        onChange={handleChange}
+                    ></textarea>
+
+                    <button id="cnt-btn" type="submit">
+                        Send Message <i className="fa-solid fa-arrow-down fa-rotate-270"></i>
+                    </button>
                 </div>
             </form>
         </>
-    )
+    );
 }
+
+export default Contact;
+
+
+
