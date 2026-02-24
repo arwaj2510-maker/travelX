@@ -2,10 +2,35 @@ import { Link } from "react-router-dom";
 import logo from "../assets/images/logoX.png";
 import { TextField, Button } from "@mui/material";
 import { useState } from "react";
+import axios from "axios";
 
 
 export default function Header() {
     const [showForm, setShowForm] = useState(false);
+    const [formData, setFormData] = useState({
+        name: "",
+        number: "",
+        email: "",
+        city: ""
+    });
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post("http://localhost:5000/api/bookings", formData);
+            alert("Booking Saved ✅");
+            setShowForm(false);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <>
             <div className="container">
@@ -31,7 +56,7 @@ export default function Header() {
 
                     {/* Booking Form */}
                     {showForm && (
-                        <form id="book-form">
+                        <form id="book-form" onSubmit={handleSubmit}>
                             <div className="hd">
                                 <span
                                     className="close"
@@ -47,6 +72,8 @@ export default function Header() {
                                 label="Name"
                                 placeholder="Enter Your Name"
                                 fullWidth
+                                value={formData.name}
+                                onChange={handleChange}
                             />
 
                             <TextField
@@ -54,6 +81,8 @@ export default function Header() {
                                 label="Phone"
                                 placeholder="Enter Your Number"
                                 fullWidth
+                                value={formData.name}
+                                onChange={handleChange}
                             />
 
                             <TextField
@@ -61,6 +90,8 @@ export default function Header() {
                                 label="Email"
                                 placeholder="Enter Your Email"
                                 fullWidth
+                                value={formData.name}
+                                onChange={handleChange}
                             />
 
                             <TextField
@@ -68,6 +99,8 @@ export default function Header() {
                                 label="City"
                                 placeholder="Enter Your City"
                                 fullWidth
+                                value={formData.name}
+                                onChange={handleChange}
                             />
                             <button className="book-btn">SUBMIT</button>
                         </form>
