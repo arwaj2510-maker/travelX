@@ -2,112 +2,66 @@ import { Link } from "react-router-dom";
 import logo from "../assets/images/logoX.png";
 import { TextField, Button } from "@mui/material";
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 
-export default function Header() {
+function Header() {
     const [showForm, setShowForm] = useState(false);
-    const [formData, setFormData] = useState({
-        name: "",
-        number: "",
-        email: "",
-        city: ""
-    });
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
-    };
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await axios.post("http://localhost:5000/api/bookings", formData);
-            alert("Booking Saved ✅");
-            setShowForm(false);
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    const [menuOpen, setMenuOpen] = useState(false);
 
     return (
         <>
-            <div className="container">
-                <div className="c1">
-                    <img src={logo} alt="" width={100} height={100} />
+            <nav className="navbar">
+                {/* Logo */}
+                <div className="logo">
+                    <img src={logo} alt="logo" width={88} />
                 </div>
 
-                <div className="c2">
+                {/* Links */}
+                <div
+                    className={`nav-links ${menuOpen ? "active" : ""}`}
+                    onClick={() => setMenuOpen(false)}
+                >
                     <Link to="/">HOME</Link>
                     <Link to="/About">ABOUT</Link>
                     <Link to="/Service">SERVICE</Link>
                     <Link to="/Gallery">GALLERY</Link>
                     <Link to="/Faq">FAQ</Link>
                     <Link to="/Contact">CONTACT</Link>
-
                 </div>
 
-                <div className="c3">
-                    {/* Book Now Button */}
-                    <button onClick={() => setShowForm(true)}>
-                        Book Now
-                    </button>
+                {/* Right Section */}
+                <button className="book-btn" onClick={() => setShowForm(true)}>
+                    Book Now
+                </button>
 
-                    {/* Booking Form */}
-                    {showForm && (
-                        <form id="book-form" onSubmit={handleSubmit}>
-                            <div className="hd">
-                                <span
-                                    className="close"
-                                    onClick={() => setShowForm(false)}
-                                >
-                                    &times;
-                                </span>
-
-                                <h1>Make Your Reservation</h1>
-                            </div>
-                            <TextField className="fm"
-                                name="name"
-                                label="Name"
-                                placeholder="Enter Your Name"
-                                fullWidth
-                                value={formData.name}
-                                onChange={handleChange}
-                            />
-
-                            <TextField
-                                name="number"
-                                label="Phone"
-                                placeholder="Enter Your Number"
-                                fullWidth
-                                value={formData.name}
-                                onChange={handleChange}
-                            />
-
-                            <TextField
-                                name="email"
-                                label="Email"
-                                placeholder="Enter Your Email"
-                                fullWidth
-                                value={formData.name}
-                                onChange={handleChange}
-                            />
-
-                            <TextField
-                                name="city"
-                                label="City"
-                                placeholder="Enter Your City"
-                                fullWidth
-                                value={formData.name}
-                                onChange={handleChange}
-                            />
-                            <button className="book-btn">SUBMIT</button>
-                        </form>
-                    )}
+                {/* Hamburger */}
+                <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>
+                    ☰
                 </div>
+            </nav>
 
-            </div>
+            {/* Booking Form Modal */}
+            {showForm && (
+                <div className="form-overlay">
+                    <form className="booking-form">
+                        <span className="close" onClick={() => setShowForm(false)}>
+                            &times;
+                        </span>
+                        <h2>Make Your Reservation</h2>
+
+                        <TextField label="Name" fullWidth margin="normal" />
+                        <TextField label="Phone" fullWidth margin="normal" />
+                        <TextField label="Email" fullWidth margin="normal" />
+                        <TextField label="City" fullWidth margin="normal" />
+
+                        <button type="submit" className="submit-btn">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            )}
         </>
     );
 }
+export default Header;

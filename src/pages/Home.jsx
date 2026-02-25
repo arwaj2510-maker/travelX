@@ -1,6 +1,5 @@
 import { Button, Typography, Container } from "@mui/material";
 import { motion } from "framer-motion";
-import { div } from "framer-motion/client";
 import greece from "../assets/images/greece.jpg";
 
 
@@ -109,9 +108,6 @@ export default function Home() {
                         </div>
                         <p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.</p>
                     </div>
-                </div>
-
-                <div className="b3">
                     <div className="expert">
                         <div className="icn">
                             <i className="fa-solid fa-rocket"></i>
