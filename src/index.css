@@ -470,69 +470,219 @@ body {
 
 /* //about// */
 
+/* ================= BUILDER SECTION ================= */
+
 .builder {
   text-align: center;
-  padding: 8%;
-
-  h1 {
-    font-size: 37px;
-  }
-
-  p {
-    color: gray;
-    padding-top: 13px;
-  }
+  padding: 100px 20px 5px;
+  margin-top: 60px;
 }
 
+.builder h1 {
+  font-size: 38px;
+}
+
+.builder p {
+  color: gray;
+  padding-top: 15px;
+  max-width: 700px;
+  margin: auto;
+}
+
+
+/* ================= ABOUT SECTION ================= */
 
 .abt {
   display: flex;
-  margin: 0 50px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  margin: 80px auto;
+  max-width: 1200px;
+  padding: 0 20px;
+}
 
-  .img {
-    position: absolute;
-    margin-left: 40px;
-    z-index: 1;
-    margin-top: 8%;
+/* IMAGE SIDE */
+.abt .img {
+  flex: 1;
+  margin-right: 30px;
+  width: 100%;
+  /* position: relative; */
+}
 
-  }
-
-  .txt {
-    box-shadow: 0 8px 20px rgba(71, 78, 82, 0.6);
-    border-radius: 10px;
-    padding: 40px 8%;
-    position: relative;
-    width: 51%;
-    margin-left: 46%;
-    margin-bottom: 15%;
-
-    h2 {
-      width: 70%;
-      font-size: 33px;
-    }
-
-    p {
-      padding: 17px 0;
-      color: gray;
-    }
-  }
-
+.abt .img img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 12px;
+  display: block;
+  margin-top: 20%;
+  margin-right: 20px;
 }
 
 
-.latest {
-  background-color: #eefbfe;
 
-  .project {
-    width: 55%;
-    text-align: center;
-    margin: auto;
-    padding: 7% 0;
+/* TEXT SIDE */
+.abt .txt {
+  flex: 1;
+  box-shadow: 0 8px 20px rgba(71, 78, 82, 0.3);
+  border-radius: 12px;
+  padding: 50px;
+  margin-bottom: 70px;
+  background: white;
+}
+
+.abt .txt h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.abt .txt p {
+  padding: 10px 0;
+  color: gray;
+  line-height: 1.6;
+}
+
+
+/* ================= LARGE LAPTOP (1200px) ================= */
+@media (max-width: 1200px) {
+  .abt {
+    gap: 30px;
   }
 
-  .why {
-    text-align: center;
+  .abt .txt h2 {
+    font-size: 32px;
+  }
 
+  .builder {
+    h1 {
+      font-size: 40px;
+    }
+
+    p {
+      font-size: 22px;
+    }
+
+    margin-top: 35px;
+  }
+}
+
+
+/* ================= TABLET (992px) ================= */
+@media (max-width: 992px) {
+  .abt {
+    flex-direction: column;
+  }
+
+  .abt .img img {
+    margin: auto;
+    max-width: 97%;
+    border-radius: 40px;
+  }
+
+  .abt .img {
+    padding-left: 20px;
+  }
+
+  .abt .txt {
+    padding: 40px 50px;
+    font-size: 20px;
+    word-spacing: 4px;
+    margin: 10px 28px;
+
+  }
+
+  .abt .txt h2 {
+    font-size: 30px;
+  }
+}
+
+
+/* ================= MOBILE (768px) ================= */
+@media (max-width: 768px) {
+
+  .builder h1 {
+    font-size: 28px;
+  }
+
+  .abt {
+    margin: 40px auto;
+  }
+
+  .abt .txt {
+    padding: 25px;
+  }
+
+  .abt .txt h2 {
+    font-size: 24px;
+  }
+
+  .abt .txt p {
+    font-size: 14px;
+  }
+
+  .abt .img img {
+    height: 560px;
+    border-radius: 20px;
+  }
+}
+
+
+/* ================= SMALL MOBILE (480px) ================= */
+@media (max-width: 480px) {
+
+  .builder {
+    padding: 80px 15px 20px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  .abt .txt {
+    padding: 20px;
+    margin: 0;
+  }
+
+  .abt .txt h2 {
+    font-size: 20px;
+  }
+
+  .abt .txt p {
+    font-size: 13px;
+  }
+
+  .abt .img img {
+    max-width: 100%;
+    border-radius: 20px;
+  }
+}
+
+/* /// */
+
+.latest {
+  background-color: #eefbfe;
+  margin-bottom: 35px;
+
+  .project {
+    text-align: center;
+    width: 55%;
+    margin: auto;
+    padding: 3%;
+
+    h1 {
+      font-size: 30px;
+    }
+
+    p {
+      color: gray;
+      padding: 10px;
+      margin: auto;
+    }
+  }
+
+  .why img {
+    width: 100%;
+    height: 360px;
   }
 
   .vector {
@@ -549,6 +699,63 @@ body {
       color: gray;
       padding: 8px 0;
     }
+  }
+}
+
+@media (max-width: 992px) {
+  .latest .project {
+    padding: 16px 23px 25px;
+
+    p {
+      padding: 10px;
+    }
+  }
+
+  .latest .why img {
+    height: auto;
+  }
+
+  .latest .vector {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 450px) {
+  .builder {
+    padding-bottom: 4px;
+
+    h1 {
+      font-size: 26px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .abt {
+    margin: 20px auto;
+  }
+
+  .latest .project {
+    padding: 16px 23px 25px;
+
+    h1 {
+      font-size: 26px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .latest .project {
+    width: 100%;
+  }
+  .latest .vector {
+    width: 100%;
   }
 }
 

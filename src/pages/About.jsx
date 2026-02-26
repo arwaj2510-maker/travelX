@@ -18,9 +18,7 @@ export default function About() {
             </div>
 
             <div className="abt">
-                <div className="img">
-                    <img src={aboutimg} alt="" />
-                </div>
+
                 <div className="txt">
                     <h2>We Realize that
                         there are reduced
@@ -31,6 +29,9 @@ export default function About() {
                     <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards – especially in the workplace. That’s why it’s crucial that, as women. inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards – especially in the workplace. That’s why it’s crucial that, as women.</p>
 
                     <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards – especially in the workplace. That’s why it’s crucial that, as women.</p>
+                </div>
+                <div className="img">
+                    <img src={aboutimg} alt="" />
                 </div>
             </div>
 
